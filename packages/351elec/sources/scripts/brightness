@@ -3,6 +3,7 @@
 # Copyright (C) 2020-present Fewtarius
 
 MIN=2
+SKIP=90
 MAX=100
 STEP=10
 if [[ -n "$2" ]]; then                               
@@ -25,6 +26,10 @@ stepUp() {
   getBrightness
   MYBRIGHTNESS=$?
   NEWBRIGHTNESS=$((${MYBRIGHTNESS}+${STEP}))
+  if (( ${NEWBRIGHTNESS} == ${SKIP} ))
+  then
+    NEWBRIGHTNESS=$((${NEWBRIGHTNESS}+${STEP}))
+  fi
   NEWBRIGHTNESS=$((${NEWBRIGHTNESS}/${STEP}*${STEP}))
   if (( ${NEWBRIGHTNESS} > ${MAX} ))
   then
@@ -38,6 +43,10 @@ stepDown() {
   getBrightness
   MYBRIGHTNESS=$?
   NEWBRIGHTNESS=$((${MYBRIGHTNESS}-${STEP}))
+  if (( ${NEWBRIGHTNESS} == ${SKIP} ))
+  then
+    NEWBRIGHTNESS=$((${NEWBRIGHTNESS}-${STEP}))
+  fi
   NEWBRIGHTNESS=$((${NEWBRIGHTNESS}/${STEP}*${STEP}))
   if (( ${NEWBRIGHTNESS} < ${MIN} ))
   then
