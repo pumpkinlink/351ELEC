@@ -4,7 +4,7 @@
 
 MIN=1
 MAX=100
-STEP=1
+STEP=10
 if [[ -n "$2" ]]; then                               
   STEP=$2                                               
 fi
@@ -25,6 +25,7 @@ stepUp() {
   getBrightness
   MYBRIGHTNESS=$?
   NEWBRIGHTNESS=$((${MYBRIGHTNESS}+${STEP}))
+  NEWBRIGHTNESS=$((${NEWBRIGHTNESS}/10*10))
   if (( ${NEWBRIGHTNESS} > ${MAX} ))
   then
     NEWBRIGHTNESS=${MAX}
@@ -37,6 +38,7 @@ stepDown() {
   getBrightness
   MYBRIGHTNESS=$?
   NEWBRIGHTNESS=$((${MYBRIGHTNESS}-${STEP}))
+  NEWBRIGHTNESS=$((${NEWBRIGHTNESS}/10*10))
   if (( ${NEWBRIGHTNESS} < ${MIN} ))
   then
     NEWBRIGHTNESS=${MIN}
