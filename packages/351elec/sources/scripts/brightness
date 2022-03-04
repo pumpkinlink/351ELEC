@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2020-present Fewtarius
 
-MIN=1
+MIN=2
 MAX=100
 STEP=10
 if [[ -n "$2" ]]; then                               
